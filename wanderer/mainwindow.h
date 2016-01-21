@@ -8,6 +8,11 @@
 #include <QCameraInfo>
 #include <QCameraFocus>
 #include <QCameraExposure>
+#include <QCameraImageCapture>
+#include <QMediaRecorder>
+#include <QCameraImageProcessing>
+
+#include <QComboBox>
 #include <QCameraViewfinder>
 
 #include <QMainWindow>
@@ -18,14 +23,14 @@ class MainWindow;
 
 class MainWindow : public QMainWindow
 {
-    Q_OBJECT
+	Q_OBJECT
 
 public:
-    explicit MainWindow(QWidget *parent = 0);
-    ~MainWindow();
+	explicit MainWindow(QWidget *parent = 0);
+	~MainWindow();
 
 private:
-    Ui::MainWindow *ui;
+	Ui::MainWindow *ui;
 };
 
 #endif // MAINWINDOW_H
