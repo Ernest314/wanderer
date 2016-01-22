@@ -3,6 +3,7 @@
 
 #include <QList>
 #include <QString>
+#include <QTextStream>
 
 #include <QCamera>
 #include <QCameraInfo>
@@ -29,8 +30,17 @@ public:
 	explicit MainWindow(QWidget *parent = 0);
 	~MainWindow();
 
+private slots:
+	void updateCameraCaptureSettings();
+
 private:
-	Ui::MainWindow *ui;
+	Ui::MainWindow* ui;
+
+	QList<QCameraInfo> cameras;
+	QCamera* camera;
+	QComboBox* comboBox_camera;
+
+	QString cameraPositionStr(QCamera::Position position);
 };
 
 #endif // MAINWINDOW_H
