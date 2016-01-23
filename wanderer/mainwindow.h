@@ -1,9 +1,13 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include <QObject>
+
 #include <QList>
 #include <QString>
 #include <QTextStream>
+
+#include <QTimer>
 
 #include <QCamera>
 #include <QCameraInfo>
@@ -15,6 +19,8 @@
 
 #include <QComboBox>
 #include <QCameraViewfinder>
+
+#include <QFileDialog>
 
 #include <QMainWindow>
 
@@ -31,9 +37,15 @@ public:
 	~MainWindow();
 
 private slots:
+	void takePicture();
+	void startSequence();
+	void stopSequence();
 	void updateCameraCaptureSettings();
+	void fetchSaveDir();
 
 private:
+	int i_pic;
+
 	Ui::MainWindow* ui;
 
 	QList<QCameraInfo> cameras;
