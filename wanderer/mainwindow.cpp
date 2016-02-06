@@ -88,6 +88,27 @@ void MainWindow::updateCameraCaptureSettings()
 	// Update ISO settings
 	QCameraExposure* exposure = camera->exposure();
 	bool isExposureAvailable = exposure->isAvailable();
+	if (!isExposureAvailable) {
+		ui->label_exposure_ISO->setDisabled(true);
+		ui->slider_ISO->setDisabled(true);
+		ui->slider_ISO->setRange(0,0);
+		ui->slider_ISO->setValue(0);
+		ui->spinBox_ISO->setDisabled(true);
+		ui->spinBox_ISO->setRange(0,0);
+		ui->spinBox_ISO->setValue(0);
+	} else {
+		ui->label_exposure_ISO->setEnabled(true);
+		ui->slider_ISO->setEnabled(true);
+		bool isContinuousISO = false;
+		QList<int> supportedISOs =
+				camera->exposure()->supportedIsoSensitivities(&isContinuousISO);
+		qSort(supportedISOs);
+		ui->slider_ISO->setRange(supportedISOs.first(), supportedISOs.last());
+		ui->slider_ISO->setValue(supportedISOs.first());
+		ui->spinBox_ISO->setEnabled(true);
+		ui->spinBox_ISO->setRange(supportedISOs.first(), supportedISOs.last());
+		ui->spinBox_ISO->setValue(supportedISOs.first());
+	}
 
 	// Update camera description
 	QTextStream camera_desc(new QString());
