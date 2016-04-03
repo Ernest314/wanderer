@@ -7,7 +7,7 @@ before_install:
     # - sudo apt-get install -qq qt5-qmake qtbase5-dev qtdeclarative5-dev qtmultimedia5-dev libqt5webkit5-dev libsqlite3-dev
     # - sudo apt-get install -qq qt5-default qttools5-dev-tools
     - sudo apt-get install -qq qt55declarative qt55multimedia qt55tools
-    - sudo apt=get install -qq qt5-default
+    - sudo apt-get install -qq qt5-default
 
 script:
     - qmake --version
