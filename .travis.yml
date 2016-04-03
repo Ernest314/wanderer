@@ -1,10 +1,11 @@
 language: cpp
 
-branches:
-    only:
-        - master
-        - beta
-        - ci-setup
+# Since we can fetch separate build status images, there is no need for limiting which branches are built
+# branches:
+    # only:
+        # - master
+        # - beta
+        # - ci-setup
 
 before_install:
     - sudo add-apt-repository --yes ppa:beineri/opt-qt56
