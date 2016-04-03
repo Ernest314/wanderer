@@ -9,6 +9,7 @@ before_install:
     - sudo apt-get install -qq qt55declarative qt55multimedia qt55tools
 
 script:
+    - source /opt/qt55/bin/qt55-env.sh
     - /opt/qt55/bin/qmake --version
     - /opt/qt55/bin/qmake wanderer/wanderer.pro
     - make
