@@ -1,5 +1,11 @@
 language: cpp
 
+branches:
+    only:
+        - master
+        - beta
+        - ci-setup
+
 before_install:
     - sudo add-apt-repository --yes ppa:beineri/opt-qt56
     - sudo apt-get update -qq
