@@ -1,15 +1,30 @@
 language: cpp
 
+# Since we can fetch separate build status images, there is no need for limiting which branches are built
+# branches:
+    # only:
+        # - master
+        # - beta
+        # - ci-setup
+
 before_install:
-    # - sudo add-apt-repository --yes ppa:ubuntu-sdk-team/ppa
-    - sudo add-apt-repository --yes ppa:beineri/opt-qt551
+    - sudo add-apt-repository --yes ppa:beineri/opt-qt56
     - sudo apt-get update -qq
+    - sudo apt-get install -qq qt56declarative qt56multimedia qt56tools
+
+# Original before_install: will not work because ppa does not come with Qt5.6.
+# before_install:
+    # - sudo add-apt-repository --yes ppa:ubuntu-sdk-team/ppa
+    # - sudo apt-get update -qq
     # - sudo apt-get install -qq qt5-qmake qtbase5-dev qtdeclarative5-dev qtmultimedia5-dev libqt5webkit5-dev libsqlite3-dev
     # - sudo apt-get install -qq qt5-default qttools5-dev-tools
-    - sudo apt-get install -qq qt55declarative qt55multimedia qt55tools
 
 script:
-    - source /opt/qt55/bin/qt55-env.sh
-    - /opt/qt55/bin/qmake --version
-    - /opt/qt55/bin/qmake wanderer/wanderer.pro
+    # Verify the correct version of Qt is being used:
+    - /opt/qt56/bin/qmake --version
+
+    - source /opt/qt56/bin/qt56-env.sh
+    - /opt/qt56/bin/qmake wanderer/wanderer.pro
     - make
+
+    # do testing stuff here
