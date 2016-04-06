@@ -96,6 +96,14 @@ void MainWindow::updateCameraCaptureSettings()
 		ui->spinBox_ISO->setDisabled(true);
 		ui->spinBox_ISO->setRange(0,0);
 		ui->spinBox_ISO->setValue(0);
+
+		ui->label_exposure_aperture->setDisabled(true);
+		ui->slider_aperture->setDisabled(true);
+		ui->slider_aperture->setRange(0,0);
+		ui->slider_aperture->setValue(0);
+		ui->spinBox_aperture->setDisabled(true);
+		ui->spinBox_aperture->setRange(0,0);
+		ui->spinBox_aperture->setValue(0);
 	} else {
 		ui->label_exposure_ISO->setEnabled(true);
 		ui->slider_ISO->setEnabled(true);
